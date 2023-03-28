@@ -1,0 +1,15 @@
+C:\Users\marek\source\repos\MatrixV2\MatrixV2\bin\Debug\net6.0\MatrixV2.exe
+C:\Users\marek\source\repos\MatrixV2\MatrixV2\bin\Debug\net6.0\MatrixV2.deps.json
+C:\Users\marek\source\repos\MatrixV2\MatrixV2\bin\Debug\net6.0\MatrixV2.runtimeconfig.json
+C:\Users\marek\source\repos\MatrixV2\MatrixV2\bin\Debug\net6.0\MatrixV2.dll
+C:\Users\marek\source\repos\MatrixV2\MatrixV2\bin\Debug\net6.0\MatrixV2.pdb
+C:\Users\marek\source\repos\MatrixV2\MatrixV2\obj\Debug\net6.0\MatrixV2.csproj.AssemblyReference.cache
+C:\Users\marek\source\repos\MatrixV2\MatrixV2\obj\Debug\net6.0\MatrixV2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\marek\source\repos\MatrixV2\MatrixV2\obj\Debug\net6.0\MatrixV2.AssemblyInfoInputs.cache
+C:\Users\marek\source\repos\MatrixV2\MatrixV2\obj\Debug\net6.0\MatrixV2.AssemblyInfo.cs
+C:\Users\marek\source\repos\MatrixV2\MatrixV2\obj\Debug\net6.0\MatrixV2.csproj.CoreCompileInputs.cache
+C:\Users\marek\source\repos\MatrixV2\MatrixV2\obj\Debug\net6.0\MatrixV2.dll
+C:\Users\marek\source\repos\MatrixV2\MatrixV2\obj\Debug\net6.0\refint\MatrixV2.dll
+C:\Users\marek\source\repos\MatrixV2\MatrixV2\obj\Debug\net6.0\MatrixV2.pdb
+C:\Users\marek\source\repos\MatrixV2\MatrixV2\obj\Debug\net6.0\MatrixV2.genruntimeconfig.cache
+C:\Users\marek\source\repos\MatrixV2\MatrixV2\obj\Debug\net6.0\ref\MatrixV2.dll
