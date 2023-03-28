@@ -10,6 +10,7 @@ namespace MatrixV2
     {
         private int dlzka;
         private Kvapka[] teloKvapky;
+        private string znaky;
         public int Length { get => dlzka; set => dlzka = value; }
         public Kvapka[] TeloKvapky { get => teloKvapky; set => teloKvapky = value; }
         public char Znak { get => znak; set => znak = value; }
@@ -32,24 +33,28 @@ namespace MatrixV2
         }
 
         public bool Up { get => up; set => up = value; }
+        public string Znaky { get => znaky; set => znaky = value; }
 
         private int x;
         private int y;
         private char znak = 'a';
-        public Kvapka(int length, int x, int y, bool up)
+        public Kvapka(int length, int x, int y, bool up, string znaky)
         {
+            Random r = new Random();
             Length = length;
             Up = up;
             X = x;
             Y = y;
+            Znaky = znaky;
+            Znak = znaky[r.Next(Znaky.Length)];
             TeloKvapky = new Kvapka[length - 1];
             if (length - 1 > 0)
             {
 
                 for (int i = 0; i < TeloKvapky.Length; i++)
                 {
-                    TeloKvapky[i] = new Kvapka(1, X, Y - (i + 1), Up);
-                    TeloKvapky[i].Znak = 'B';
+                    TeloKvapky[i] = new Kvapka(1, X, Y - (i + 1), Up, Znaky);
+                    TeloKvapky[i].Znak = znaky[r.Next(Znaky.Length)];
                 }
             }
 
@@ -57,14 +62,15 @@ namespace MatrixV2
         }
         public void setLength(int len)
         {
+            Random r = new Random();
             TeloKvapky = new Kvapka[len - 1];
             if (len - 1 > 0)
             {
 
                 for (int i = 0; i < TeloKvapky.Length; i++)
                 {
-                    TeloKvapky[i] = new Kvapka(1, X, Y - (i + 1), Up);
-                    TeloKvapky[i].Znak = 'B';
+                    TeloKvapky[i] = new Kvapka(1, X, Y - (i + 1), Up, Znaky);
+                    TeloKvapky[i].Znak = znaky[r.Next(Znaky.Length)];
                 }
             }
         }
@@ -92,7 +98,12 @@ namespace MatrixV2
         }
         public void posun()
         {
+            Random r = new Random();
             Y = Y + 1;
+            if (r.Next(100) > 80)
+            {
+                Znak = znaky[r.Next(Znaky.Length)];
+            }
             //if (TeloKvapky.Length > 0)
             //{
             //    foreach (Kvapka a in TeloKvapky)

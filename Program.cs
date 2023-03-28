@@ -5,12 +5,13 @@
         static void Main(string[] args)
         {
             bool directionUp = false;
-            ConsoleColor color = ConsoleColor.Red;
-            int delaySpeed = 100;
+            ConsoleColor color = ConsoleColor.Green;
+            int delaySpeed = 1;
             string characters = "Numeric";
             bool help = false;
+            string density = "";
 
-            // Loop through all the entry arguments and parse them
+            
             for (int i = 0; i < args.Length; i++)
             {
                 switch (args[i])
@@ -56,6 +57,17 @@
                     case "--help":
                         help = true;
                         break;
+                    case "--density":
+                        if (i + 1 < args.Length)
+                        {
+                            density = args[i + 1];
+                            i++;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Invalid value for --density argument.");
+                        }
+                        break;
                     default:
                         Console.WriteLine($"Invalid argument: {args[i]}");
                         break;
@@ -81,16 +93,38 @@
                     charactersToUse = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
                     break;
             }
-            Console.Clear();
-
+            
             Random rand = new Random();
-            int poc = 5;
-            Kvapka[] kvapky = new Kvapka[poc];
-            for (int i = 0; i < poc; i++)
+            int hustota = rand.Next();
+            switch (density)
             {
-                kvapky[i] = new(rand.Next(2, Console.WindowHeight), rand.Next(Console.WindowWidth), rand.Next(0, 4) * -1, directionUp);
+                case "Vysoka":
+                    hustota = Console.WindowWidth;
+                    break;
+                case "Stredna":
+                    hustota = Console.WindowWidth/2;
+                    break;
+                case "Nizka":
+                    hustota = Console.WindowWidth / 3;
+                    break;
+                default:
+                    hustota = Console.WindowWidth / 2;
+                    break;
+            }
+            Console.Clear();
+            Console.CursorVisible = false;
+            
+            
+            Kvapka[] kvapky = new Kvapka[hustota];
+            for (int i = 0; i < kvapky.Length; i++)
+            {
+                kvapky[i] = new(rand.Next(2, Console.WindowHeight), rand.Next(Console.WindowWidth), rand.Next(0, 20) * -1, directionUp, charactersToUse);
             }
             while (true) { 
+                //funkcionalita pridavania kvapiek v kazdom opakovani cyklu, spomalilo  tak nevyuzivam
+                //if (rand.Next(100) > 50){
+                //    vygenerujKvapky(kvapky, directionUp, charactersToUse);
+                //}
                 foreach (Kvapka item in kvapky)
                 {
 
@@ -119,7 +153,7 @@
                             if (i.Y > Console.WindowHeight)
                             {
                                 item.setX(rand.Next(Console.WindowWidth));
-                                item.setY(rand.Next(0, 10) * -1);
+                                item.setY(rand.Next(0, 20) * -1);
                                 item.setLength(rand.Next(2, Console.WindowHeight));
                                 break;
 
@@ -132,6 +166,27 @@
 
                 }
                 Thread.Sleep(delaySpeed);
+            }
+        }
+
+        static void vygenerujKvapky(Kvapka[] dazd, bool directionUp, string charactersToUse)
+        {
+            Kvapka[] temp = dazd;
+            Random rand = new Random();
+            int poc = rand.Next(2);
+            dazd = new Kvapka[temp.Length + poc];
+            int index = 0;
+            foreach (Kvapka k in temp)
+            {
+                dazd[index] = k;
+                index++;
+            }
+            for (int i = 0; i < dazd.Length; i++)
+            {
+                if (dazd[i] != null)
+                {
+                    dazd[i] = new(rand.Next(2, Console.WindowHeight), rand.Next(Console.WindowWidth), rand.Next(0, 4) * -1, directionUp, charactersToUse);
+                }
             }
         }
     }
